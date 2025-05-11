@@ -9,26 +9,34 @@ const Home = () => {
       <div className="grid gap-6 w-full max-w-md">
         <Link
           to="/learnarabic"
-          className="bg-amber-100 hover:bg-white hover:text-purple-700 transition duration-300 p-6 rounded-2xl shadow-md text-center text-lg font-medium text-gray-800"
+          className="bg-blue-100 hover:bg-white text-purple-700 transition duration-300 p-6 rounded-2xl shadow-md text-center text-base font-medium "
         >
-          Learn Arabic <br /> <span className="text-sm ">अरबी सीखें</span> <br />
-          <span className="text-sm ">আরবি শিখুন</span>
+          Arabic  ⟷ English ⟷ हिंदी ⟷ বাংলা   <br /> <span className="text-sm ">English ⟷ हिंदी </span> <br />
+          <span className="text-sm ">हिंदी ⟷ বাংলা </span>
         </Link>
 
         <Link
-          to="/learnenglish"
-          className="bg-amber-100 hover:bg-white hover:text-purple-700 transition duration-300 p-6 rounded-2xl shadow-md text-center text-lg font-medium text-gray-800"
+          to="/arabicalphabet"
+          className="bg-blue-100 hover:bg-white text-purple-700 transition duration-300 p-6 rounded-2xl shadow-md text-center text-lg font-medium "
         >
-          Learn English <br /> <span className="text-sm ">अंग्रेज़ी सीखें</span> <br />
-          <span className="text-sm ">ইংরেজি শিখুন</span>
+          Arabic Alphabet <br /> <span className="text-sm "> अरबी अक्षर </span> <br />
+          <span className="text-sm "> আরবি বর্ণমালা </span> 
         </Link>
 
         <Link
-          to="/learnhindi"
-          className="bg-amber-100 hover:bg-white hover:text-purple-700 transition duration-300 p-6 rounded-2xl shadow-md text-center text-lg font-medium text-gray-800"
+          to="/englishalphabet"
+          className="bg-blue-100 hover:bg-white text-purple-700 transition duration-300 p-6 rounded-2xl shadow-md text-center text-lg font-medium "
         >
-          Learn Hindi <br /> <span className="text-sm ">हिंदी सीखें</span> <br />
-          <span className="text-sm ">হিন্দি শিখুন</span>
+          English Alphabet <br /> <span className="text-sm ">अंग्रेजी वर्णमाला</span> <br />
+          <span className="text-sm "> ইংরেজি বর্ণমালা </span>
+        </Link>
+
+        <Link
+          to="/hindialphabet"
+          className="bg-blue-100 hover:bg-white text-purple-700 transition duration-300 p-6 rounded-2xl shadow-md text-center text-lg font-medium "
+        >
+          Hindi Alphabet <br /> <span className="text-sm "> हिंदी वर्णमाला </span> <br />
+          <span className="text-sm "> হিন্দি বর্ণমালা </span> 
         </Link>
       </div>
     </div>

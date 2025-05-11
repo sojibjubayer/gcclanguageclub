@@ -13,6 +13,9 @@ import HindiVocabularies from "../pages/learnHindi/HindiVocabularies";
 import HindiSentences from "../pages/learnHindi/HindiSentences";
 import VocabularyForm from "../pages/form/VocabularyForm";
 import ArabicLessons from "../pages/learnArabic/ArabicLessons";
+import ArabicAlphabet from "../pages/learnArabic/ArabicAlphabet";
+import EnglishAlphabet from "../pages/learnEnglish/EnglishAlphabet";
+import HindiAlphabet from "../pages/learnHindi/HindiAlphabet";
 
 
 
@@ -75,5 +78,19 @@ export const router = createBrowserRouter([
                 path:'/addvocabulary',
                 element:<VocabularyForm></VocabularyForm>
             },
+            //ALPHABET
+            {
+                path:'/arabicalphabet',
+                element:<ArabicAlphabet></ArabicAlphabet>
+            },
+            {
+                path:'/englishalphabet',
+                element:<EnglishAlphabet></EnglishAlphabet>
+            },
+            {
+                path:'/hindialphabet',
+                element:<HindiAlphabet></HindiAlphabet>
+            },
+
         ]
     }])

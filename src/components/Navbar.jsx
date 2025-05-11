@@ -3,17 +3,44 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
-        <div className='bg-gradient-to-r from-purple-100 to-blue-100 shadow-md py-4 flex justify-between px-2'>
-            <h2>GCC-LC</h2>
-            <ul className='flex justify-items-center gap-10 '>
-                <li><Link className='px-2 rounded-md bg-amber-200 p-1' to="/">Home</Link></li>
-                <li><Link className='px-2 rounded-md bg-amber-200 p-1' to="/learnlanguage">Learn Languages</Link></li>
-                <li><Link className='px-2 rounded-md bg-amber-200 p-1' to="/addvocabulary">Add Vocabulary</Link></li>
-            </ul>
+        <header className="bg-gradient-to-r from-purple-100 to-blue-100 shadow-md py-4 px-6 flex items-center justify-between">
+            <h2 className="text-2xl font-bold text-purple-700">GCC-LC</h2>
+
+            <nav>
+                <ul className="flex items-center gap-6">
+                    <li>
+                        <Link
+                            to="/"
+                            className="bg-blue-200 hover:bg-blue-300 text-gray-800 font-medium px-4 py-2 rounded-md transition duration-200"
+                        >
+                            Home
+                        </Link>
+                    </li>
+                    {/* <li>
+                        <Link
+                            to="/learnlanguage"
+                            className="bg-yellow-200 hover:bg-yellow-300 text-gray-800 font-medium px-4 py-2 rounded-md transition duration-200"
+                        >
+                            Learn Languages
+                        </Link>
+                    </li> */}
+                    <li>
+                        <Link
+                            to="/addvocabulary"
+                            className="bg-green-200 hover:bg-green-300 text-gray-800 font-medium px-4 py-2 rounded-md transition duration-200"
+                        >
+                            Add Vocabulary
+                        </Link>
+                    </li>
+                </ul>
+            </nav>
+
             <div>
-                Login
+                <button className="bg-purple-500 hover:bg-purple-600 text-white font-semibold px-4 py-2 rounded-md transition duration-200">
+                    Login
+                </button>
             </div>
-        </div>
+        </header>
     );
 };
 
