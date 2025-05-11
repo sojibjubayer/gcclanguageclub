@@ -12,6 +12,7 @@ import EnglishSentences from "../pages/learnEnglish/EnglishSentences";
 import HindiVocabularies from "../pages/learnHindi/HindiVocabularies";
 import HindiSentences from "../pages/learnHindi/HindiSentences";
 import VocabularyForm from "../pages/form/VocabularyForm";
+import ArabicLessons from "../pages/learnArabic/ArabicLessons";
 
 
 
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
             },
             // LANGUAGES PAGE
             {
+                path:'/arabiclessons',
+                element:<ArabicLessons></ArabicLessons>
+            },
+            {
                 path:'/learnarabic',
                 element:<LearnArabic></LearnArabic>
             },
@@ -43,7 +48,7 @@ export const router = createBrowserRouter([
             },
             //DETAILS PAGE
             {
-                path:'/arabicvocabularies',
+                path:'/lesson/:lessonType',
                 element:<ArabicVocabularies></ArabicVocabularies>
             },
             {

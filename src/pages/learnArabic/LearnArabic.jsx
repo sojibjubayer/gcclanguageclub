@@ -7,7 +7,7 @@ const LearnArabic = () => {
       <div className="min-h-screen">
         <div>
           <Link
-            to="/arabicvocabularies"
+            to="/arabiclessons"
             className="block text-center md:w-[30%] mx-auto bg-amber-100 p-2 py-6 m-3 rounded-md"
           >
             Arabic Vocabularies <br />

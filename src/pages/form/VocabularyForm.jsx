@@ -1,196 +1,111 @@
 import React, { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
 
 const VocabularyForm = () => {
-  const initialFormState = {
-    selectedLanguage: "arabic",
-    word: "",
-    transliteration: "",
-    meaning: "",
-    hindi: {
-      transliteration: "",
-      meaning: "",
-    },
-    bengali: {
-      transliteration: "",
-      meaning: "",
-    },
-  };
-
-  const [formData, setFormData] = useState(initialFormState);
+  const [formData, setFormData] = useState({
+    lessonType: "greetings",
+    arabic: "",
+    englishWord: "",
+    hindiWord: "",
+    bengaliWord: "",
+    englishTransliteration: "",
+    hindiTransliteration: "",
+    bengaliTransliteration: "",
+    englishBengaliTransliteration: "",
+    englishHindiTransliteration: "",
+    hindiBengaliTransliteration: ""
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name.includes(".")) {
-      const [field, subField] = name.split(".");
-      setFormData((prevData) => ({
-        ...prevData,
-        [field]: {
-          ...prevData[field],
-          [subField]: value,
-        },
-      }));
-    } else {
-      setFormData((prevData) => ({
-        ...prevData,
-        [name]: value,
-      }));
-    }
-  };
-
-  const handleLanguageChange = (e) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      selectedLanguage: e.target.value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/api/vocabulary", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+      await axios.post("http://localhost:5000/api/vocabulary", formData);
+      // alert("Vocabulary submitted successfully!");
+      toast.success("Vocabulary submitted successfully!")
+      setFormData({
+        lessonType: "greetings",
+        arabic: "",
+        englishWord: "",
+        hindiWord: "",
+        bengaliWord: "",
+        englishTransliteration: "",
+        hindiTransliteration: "",
+        bengaliTransliteration: "",
+        englishBengaliTransliteration: "",
+        englishHindiTransliteration: "",
+        hindiBengaliTransliteration: ""
       });
-
-      if (response.ok) {
-        const data = await response.json();
-        toast.success("Vocabulary added successfully!");
-        setFormData(initialFormState); // Clear the form
-        console.log("Form submitted successfully:", data);
-      } else {
-        toast.error("Failed to submit vocabulary.");
-      }
     } catch (error) {
-      console.error("Error submitting form:", error);
-      toast.error("An error occurred during submission.");
+      console.error("Submission error:", error);
+      alert("Submission failed. Try again.");
     }
   };
+
   return (
-    <div className="p-6 bg-gray-50 min-h-screen">
-      <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
-        <h2 className="text-3xl font-semibold text-gray-800 mb-4">Add Vocabulary</h2>
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center p-4">
+      <form
+        onSubmit={handleSubmit}
+        className="w-full max-w-xl bg-white border-2 border-purple-300 rounded-xl shadow-lg p-8 space-y-5"
+      >
+        <h2 className="text-3xl font-bold text-purple-700 text-center">Add Vocabulary</h2>
 
-        <form onSubmit={handleSubmit}>
-          {/* Language Selection */}
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">Select Language:</label>
-            <select
-              name="selectedLanguage"
-              value={formData.selectedLanguage}
-              onChange={handleLanguageChange}
-              className="mt-1 p-2 border border-gray-300 rounded w-full"
-            >
-              <option value="arabic">Arabic</option>
-              <option value="english">English</option>
-              <option value="hindi">Hindi</option>
-              <option value="bengali">Bengali</option>
-            </select>
-          </div>
-
-          {/* Word */}
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">Word:</label>
-            <input
-              type="text"
-              name="word"
-              value={formData.word}
-              onChange={handleChange}
-              className="mt-1 p-2 border border-gray-300 rounded w-full"
-              required
-            />
-          </div>
-
-          {/* Transliteration */}
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">Transliteration:</label>
-            <input
-              type="text"
-              name="transliteration"
-              value={formData.transliteration}
-              onChange={handleChange}
-              className="mt-1 p-2 border border-gray-300 rounded w-full"
-              required
-            />
-          </div>
-
-          {/* Meaning */}
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">Meaning:</label>
-            <input
-              type="text"
-              name="meaning"
-              value={formData.meaning}
-              onChange={handleChange}
-              className="mt-1 p-2 border border-gray-300 rounded w-full"
-              required
-            />
-          </div>
-
-          {/* Hindi Transliteration and Meaning */}
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">Hindi Transliteration:</label>
-            <input
-              type="text"
-              name="hindi.transliteration"
-              value={formData.hindi.transliteration}
-              onChange={handleChange}
-              className="mt-1 p-2 border border-gray-300 rounded w-full"
-              required
-            />
-          </div>
-
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">Hindi Meaning:</label>
-            <input
-              type="text"
-              name="hindi.meaning"
-              value={formData.hindi.meaning}
-              onChange={handleChange}
-              className="mt-1 p-2 border border-gray-300 rounded w-full"
-              required
-            />
-          </div>
-
-          {/* Bengali Transliteration and Meaning */}
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">Bengali Transliteration:</label>
-            <input
-              type="text"
-              name="bengali.transliteration"
-              value={formData.bengali.transliteration}
-              onChange={handleChange}
-              className="mt-1 p-2 border border-gray-300 rounded w-full"
-              required
-            />
-          </div>
-
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">Bengali Meaning:</label>
-            <input
-              type="text"
-              name="bengali.meaning"
-              value={formData.bengali.meaning}
-              onChange={handleChange}
-              className="mt-1 p-2 border border-gray-300 rounded w-full"
-              required
-            />
-          </div>
-
-          {/* Submit Button */}
-          <button
-            type="submit"
-            className="w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        {/* Lesson Type Selection */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Select Lesson Type:</label>
+          <select
+            name="lessonType"
+            value={formData.lessonType}
+            onChange={handleChange}
+            className="mt-1 p-2 border border-gray-300 rounded w-full"
           >
-            Submit Vocabulary
-          </button>
-        </form>
-        <ToastContainer />
-      </div>
+            <option value="greetings">Greetings</option>
+            <option value="travelandnavigation">Travel & Navigation</option>
+            <option value="foodanddining">Food and Dining</option>
+            <option value="shoppingandcurrency">Shopping and Currency</option>
+            <option value="numbersandcounting">Numbers and Counting</option>
+            <option value="timeanddates">Time and Dates</option>
+            <option value="weatherandseasons">Weather and Seasons</option>
+          </select>
+        </div>
+
+        {/* Vocabulary Fields */}
+        {[
+          { label: "Arabic Word", name: "arabic" },
+          { label: "English Word", name: "englishWord" },
+          { label: "Hindi Word", name: "hindiWord" },
+          { label: "Bengali Word", name: "bengaliWord" },
+          { label: "English Transliteration", name: "englishTransliteration" },
+          { label: "Hindi Transliteration", name: "hindiTransliteration" },
+          { label: "Bengali Transliteration", name: "bengaliTransliteration" },
+          { label: "English → Bengali Transliteration", name: "englishBengaliTransliteration" },
+          { label: "English → Hindi Transliteration", name: "englishHindiTransliteration" },
+          { label: "Hindi → Bengali Transliteration", name: "hindiBengaliTransliteration" }
+        ].map((field) => (
+          <div key={field.name}>
+            <label className="block text-sm font-medium text-gray-700 mb-1">{field.label}</label>
+            <input
+              name={field.name}
+              value={formData[field.name]}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+            />
+          </div>
+        ))}
+
+        <button
+          type="submit"
+          className="w-full mt-4 bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 rounded-lg transition duration-300"
+        >
+          Submit Vocabulary
+        </button>
+      </form>
+      <ToastContainer />
     </div>
   );
 };
