@@ -174,24 +174,32 @@ const alphabets = [
 const ArabicAlphabet = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-yellow-50 to-rose-100 p-4 sm:p-8">
-      <h1 className="text-3xl sm:text-4xl font-bold text-center text-rose-700 mb-8">
+      <h1 className="text-3xl sm:text-4xl font-bold text-center text-rose-700 mb-4">
         Arabic Alphabet with Transliteration
       </h1>
+      <p className="text-xl text-center text-gray-400 mb-4"> Note: Read from right to left. </p>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+      {/* Right-to-left layout for grid */}
+      <div
+        dir="rtl"
+        className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"
+      >
         {alphabets.map((letter, index) => (
           <div
             key={index}
-            className="bg-white shadow-lg border border-rose-200 rounded-xl p-4 text-center space-y-2"
+            className="bg-white shadow-md border border-rose-200 rounded-xl p-4 text-center space-y-3"
           >
+            {/* Arabic letter in RTL */}
             <div className="text-4xl text-rose-600 font-bold">{letter.arabic}</div>
-            <div className="text-sm text-gray-700">
+
+            {/* Switch back to LTR for other text */}
+            <div dir="ltr" className="text-sm text-gray-700">
               <strong>English:</strong> {letter.english}
             </div>
-            <div className="text-sm text-gray-700">
+            <div dir="ltr" className="text-sm text-gray-700">
               <strong>Hindi:</strong> {letter.hindi}
             </div>
-            <div className="text-sm text-gray-700">
+            <div dir="ltr" className="text-sm text-gray-700">
               <strong>Bangla:</strong> {letter.bangla}
             </div>
           </div>

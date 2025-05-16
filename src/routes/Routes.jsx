@@ -16,6 +16,8 @@ import ArabicLessons from "../pages/learnArabic/ArabicLessons";
 import ArabicAlphabet from "../pages/learnArabic/ArabicAlphabet";
 import EnglishAlphabet from "../pages/learnEnglish/EnglishAlphabet";
 import HindiAlphabet from "../pages/learnHindi/HindiAlphabet";
+import Registration from "../pages/form/Registration";
+import Login from "../pages/form/Login";
 
 
 
@@ -90,6 +92,14 @@ export const router = createBrowserRouter([
             {
                 path:'/hindialphabet',
                 element:<HindiAlphabet></HindiAlphabet>
+            },
+            {
+                path:'/registration',
+                element:<Registration></Registration>
+            },
+            {
+                path:'/login',
+                element:<Login></Login>
             },
 
         ]
