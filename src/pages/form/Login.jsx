@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 
 const countries = [
@@ -30,6 +30,8 @@ export default function LoginForm() {
     },
   });
   const navigate = useNavigate();
+  const location = useLocation();
+const from = location.state?.from?.pathname || "/";
 
   const selectedCountry = watch("country");
   const selectedCountryInfo = countries.find((c) => c.name === selectedCountry);
@@ -37,6 +39,7 @@ export default function LoginForm() {
   const onSubmit = async (data) => {
     const dataWithDialCode = {
       mobile: `${selectedCountryInfo?.dialCode}${data.mobile}`, 
+      password: data.password
     };
 
     try {
@@ -50,7 +53,8 @@ export default function LoginForm() {
         localStorage.setItem("authToken", token);
         localStorage.setItem("user", JSON.stringify(user));
      
-        setTimeout(() => navigate("/"), 1000); 
+        setTimeout(() => navigate(from, { replace: true }), 1000);
+
       }
     } catch (error) {
       alert("Invalid credentials. Please try again.");

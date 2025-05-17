@@ -18,89 +18,112 @@ import EnglishAlphabet from "../pages/learnEnglish/EnglishAlphabet";
 import HindiAlphabet from "../pages/learnHindi/HindiAlphabet";
 import Registration from "../pages/form/Registration";
 import Login from "../pages/form/Login";
-
-
-
-
-
+import AdminLayout from "../pages/admin/AdminLayout";
+import ManageUsers from "../pages/admin/ManageUsers";
+import AdminHome from "../pages/admin/AdminHome";
+import ManageVocabulary from "../pages/admin/ManageVocabulary";
+import AdminRoute from "../pages/admin/AdminRoute";
 
 export const router = createBrowserRouter([
-    {
-        path:'/',
-        element:<MainLayout></MainLayout>,
-        errorElement:<NotFound></NotFound>,
-        children:[
-            {
-                path:'/',
-                element:<Home></Home>
-            },
-            // LANGUAGES PAGE
-            {
-                path:'/arabiclessons',
-                element:<ArabicLessons></ArabicLessons>
-            },
-            {
-                path:'/learnarabic',
-                element:<LearnArabic></LearnArabic>
-            },
-            {
-                path:'/learnenglish',
-                element:<LearnEnglish></LearnEnglish>
-            },
-            {
-                path:'/learnhindi',
-                element:<LearnHindi></LearnHindi>
-            },
-            //DETAILS PAGE
-            {
-                path:'/lesson/:lessonType',
-                element:<ArabicVocabularies></ArabicVocabularies>
-            },
-            {
-                path:'/arabicsentences',
-                element:<ArabicSentences></ArabicSentences>
-            },
-            {
-                path:'/englishvocabularies',
-                element:<EnglishVocabularies></EnglishVocabularies>
-            },
-            {
-                path:'/englishsentences',
-                element:<EnglishSentences></EnglishSentences>
-            },
-            {
-                path:'/hindivocabularies',
-                element:<HindiVocabularies></HindiVocabularies>
-            },
-            {
-                path:'/hindisentences',
-                element:<HindiSentences></HindiSentences>
-            },
-            {
-                path:'/addvocabulary',
-                element:<VocabularyForm></VocabularyForm>
-            },
-            //ALPHABET
-            {
-                path:'/arabicalphabet',
-                element:<ArabicAlphabet></ArabicAlphabet>
-            },
-            {
-                path:'/englishalphabet',
-                element:<EnglishAlphabet></EnglishAlphabet>
-            },
-            {
-                path:'/hindialphabet',
-                element:<HindiAlphabet></HindiAlphabet>
-            },
-            {
-                path:'/registration',
-                element:<Registration></Registration>
-            },
-            {
-                path:'/login',
-                element:<Login></Login>
-            },
+  {
+    path: "/",
+    element: <MainLayout></MainLayout>,
+    errorElement: <NotFound></NotFound>,
+    children: [
+      {
+        path: "",
+        element: <Home></Home>,
+      },
+      // LANGUAGES PAGE
+      {
+        path: "arabiclessons",
+        element: <ArabicLessons></ArabicLessons>,
+      },
+      {
+        path: "learnarabic",
+        element: <LearnArabic></LearnArabic>,
+      },
+      {
+        path: "learnenglish",
+        element: <LearnEnglish></LearnEnglish>,
+      },
+      {
+        path: "learnhindi",
+        element: <LearnHindi></LearnHindi>,
+      },
+      //DETAILS PAGE
+      {
+        path: "lesson/:lessonType",
+        element: <ArabicVocabularies></ArabicVocabularies>,
+      },
+      {
+        path: "arabicsentences",
+        element: <ArabicSentences></ArabicSentences>,
+      },
+      {
+        path: "englishvocabularies",
+        element: <EnglishVocabularies></EnglishVocabularies>,
+      },
+      {
+        path: "englishsentences",
+        element: <EnglishSentences></EnglishSentences>,
+      },
+      {
+        path: "hindivocabularies",
+        element: <HindiVocabularies></HindiVocabularies>,
+      },
+      {
+        path: "hindisentences",
+        element: <HindiSentences></HindiSentences>,
+      },
+      {
+        path: "addvocabulary",
+        element: <VocabularyForm></VocabularyForm>,
+      },
+      //ALPHABET
+      {
+        path: "arabicalphabet",
+        element: <ArabicAlphabet></ArabicAlphabet>,
+      },
+      {
+        path: "englishalphabet",
+        element: <EnglishAlphabet></EnglishAlphabet>,
+      },
+      {
+        path: "hindialphabet",
+        element: <HindiAlphabet></HindiAlphabet>,
+      },
+      {
+        path: "registration",
+        element: <Registration></Registration>,
+      },
+      {
+        path: "login",
+        element: <Login></Login>,
+      },
+    ],
+  },
+  {
+    path: "/admin",
+    element: <AdminRoute><AdminLayout></AdminLayout></AdminRoute>,
+    children: [
+      {
+        path: "",
+        element: <AdminHome></AdminHome>,
+      },
+      {
+        path: "addvocabulary",
+        element: <VocabularyForm></VocabularyForm>,
+      },
+      {
+        path: "managevocabulary",
+        element: <ManageVocabulary></ManageVocabulary>
+      },
 
-        ]
-    }])
+      {
+        path: "manageusers",
+        element: <ManageUsers></ManageUsers>,
+      },
+    ],
+  },
+]);

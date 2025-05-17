@@ -8,18 +8,20 @@ const ArabicVocabularies = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { lessonType } = useParams();
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/vocabulary")
-      .then((response) => {
-        setVocabularyList(
-          response.data.filter((item) => item.lessonType === lessonType)
-        );
-      })
-      .catch((error) => {
-        console.error("Error fetching vocabulary items:", error);
-      });
-  }, [lessonType]);
+ useEffect(() => {
+  if (!lessonType) return;
+
+  axios
+    .get(`http://localhost:5000/api/vocabulary?lessonType=${lessonType}`)
+    .then((response) => {
+      setVocabularyList(response.data);
+    })
+    .catch((error) => {
+      console.error("Error fetching vocabulary items:", error);
+    });
+}, [lessonType]);
+
+
  
   const playPronunciation = (text, lang) => {
     if (!("speechSynthesis" in window)) {
