@@ -19,7 +19,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="bg-gradient-to-r from-purple-100 to-blue-100 shadow-md px-4 py-3 md:py-4 relative">
+    <header className="z-50 bg-gradient-to-r from-purple-100 to-blue-100 shadow-md px-4 py-3 md:py-4 relative">
       {/* Flex Container */}
       <div className="flex items-center justify-between relative">
         {/* Left: Logo */}

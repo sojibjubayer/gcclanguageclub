@@ -19,6 +19,12 @@ const AdminHome = () => {
                         Manage Vocabulary
                     </Link>
                     <Link 
+                        to="/admin/adddailysentences" 
+                        className="block w-full bg-cyan-500 text-white font-medium py-2 rounded-md hover:bg-cyan-600 transition"
+                    >
+                        Add Daily Used Sentences
+                    </Link>
+                    <Link 
                         to="/admin/manageusers" 
                         className="block w-full bg-cyan-500 text-white font-medium py-2 rounded-md hover:bg-cyan-600 transition"
                     >

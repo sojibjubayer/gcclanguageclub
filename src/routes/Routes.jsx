@@ -14,6 +14,8 @@ import HindiSentences from "../pages/learnHindi/HindiSentences";
 import VocabularyForm from "../pages/form/VocabularyForm";
 import ArabicLessons from "../pages/learnArabic/ArabicLessons";
 import ArabicAlphabet from "../pages/learnArabic/ArabicAlphabet";
+import Sentences from "../pages/learnArabic/Sentences";
+import TypedSentences from "../pages/learnArabic/TypedSentences";
 import EnglishAlphabet from "../pages/learnEnglish/EnglishAlphabet";
 import HindiAlphabet from "../pages/learnHindi/HindiAlphabet";
 import Registration from "../pages/form/Registration";
@@ -25,6 +27,7 @@ import ManageVocabulary from "../pages/admin/ManageVocabulary";
 import AdminRoute from "../pages/admin/AdminRoute";
 import AboutUs from "../components/AboutUs";
 import ContactUs from "../components/ContactUs";
+import SentenceForm from "../pages/form/SentenceForm";
 
 export const router = createBrowserRouter([
   {
@@ -95,6 +98,15 @@ export const router = createBrowserRouter([
         path: "hindialphabet",
         element: <HindiAlphabet></HindiAlphabet>,
       },
+      //SENTENCES
+      {
+        path: "sentences",
+        element: <Sentences></Sentences>,
+      },
+      {
+        path: "sentences/:sentenceType",
+        element: <TypedSentences></TypedSentences>,
+      },
       {
         path: "registration",
         element: <Registration></Registration>,
@@ -124,6 +136,10 @@ export const router = createBrowserRouter([
       {
         path: "addvocabulary",
         element: <VocabularyForm></VocabularyForm>,
+      },
+      {
+        path: "adddailysentences",
+        element: <SentenceForm></SentenceForm>,
       },
       {
         path: "managevocabulary",
