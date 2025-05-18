@@ -23,6 +23,8 @@ import ManageUsers from "../pages/admin/ManageUsers";
 import AdminHome from "../pages/admin/AdminHome";
 import ManageVocabulary from "../pages/admin/ManageVocabulary";
 import AdminRoute from "../pages/admin/AdminRoute";
+import AboutUs from "../components/AboutUs";
+import ContactUs from "../components/ContactUs";
 
 export const router = createBrowserRouter([
   {
@@ -100,6 +102,14 @@ export const router = createBrowserRouter([
       {
         path: "login",
         element: <Login></Login>,
+      },
+      {
+        path: "aboutus",
+        element: <AboutUs></AboutUs>,
+      },
+      {
+        path: "contactus",
+        element: <ContactUs></ContactUs>,
       },
     ],
   },
